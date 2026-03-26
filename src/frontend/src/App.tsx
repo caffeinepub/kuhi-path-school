@@ -54,6 +54,12 @@ const PROGRAMS = [
       "Whether it's your child's first musical step or your own dream deferred — our Piano classes offer personalized coaching in notes, scales, and beautiful melodies for all age groups.",
   },
   {
+    icon: "🧮",
+    title: "Abacus",
+    description:
+      "Give your child a lifelong mental math advantage. Our Abacus classes train young minds to calculate with speed and accuracy, boosting concentration, memory, and logical thinking from an early age.",
+  },
+  {
     icon: "🧘",
     title: "Yoga",
     description:
@@ -126,6 +132,18 @@ const STAR_POSITIONS = [1, 2, 3, 4, 5];
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formName, setFormName] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formProgram, setFormProgram] = useState("");
+  const [formMessage, setFormMessage] = useState("");
+
+  const handleEnquirySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const msg =
+      `New Enquiry from Kuhi Path Website\n\nName: ${formName}\nPhone: ${formPhone}\nProgram: ${formProgram || "Not specified"}\nMessage: ${formMessage || "No message"}`.trim();
+    const waUrl = `https://wa.me/918414092634?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, "_blank");
+  };
   const [scrolled, setScrolled] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -378,7 +396,7 @@ export default function App() {
                 {[
                   { value: "10+", label: "Years of Excellence" },
                   { value: "500+", label: "Happy Students" },
-                  { value: "9", label: "Programs Offered" },
+                  { value: "10", label: "Programs Offered" },
                   { value: "20+", label: "Expert Instructors" },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
@@ -804,7 +822,7 @@ export default function App() {
               <h3 className="font-serif text-xl font-bold text-[#1F2E33] mb-5">
                 Enrollment Enquiry
               </h3>
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+              <form onSubmit={handleEnquirySubmit} className="space-y-4">
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -817,6 +835,9 @@ export default function App() {
                     type="text"
                     placeholder="Your name"
                     className="w-full px-4 py-2.5 rounded-lg bg-[#F6EBD6] border border-[#E6D7BE] text-[#1F2E33] placeholder:text-[#4B4F52]/50 focus:outline-none focus:ring-2 focus:ring-[#C95A2E]/30 focus:border-[#C95A2E] transition-colors text-sm"
+                    value={formName}
+                    onChange={(e) => setFormName(e.target.value)}
+                    required
                     data-ocid="contact.input"
                   />
                 </div>
@@ -832,6 +853,9 @@ export default function App() {
                     type="tel"
                     placeholder="+91 xxxxx xxxxx"
                     className="w-full px-4 py-2.5 rounded-lg bg-[#F6EBD6] border border-[#E6D7BE] text-[#1F2E33] placeholder:text-[#4B4F52]/50 focus:outline-none focus:ring-2 focus:ring-[#C95A2E]/30 focus:border-[#C95A2E] transition-colors text-sm"
+                    value={formPhone}
+                    onChange={(e) => setFormPhone(e.target.value)}
+                    required
                     data-ocid="contact.input"
                   />
                 </div>
@@ -845,6 +869,8 @@ export default function App() {
                   <select
                     id="contact-program"
                     className="w-full px-4 py-2.5 rounded-lg bg-[#F6EBD6] border border-[#E6D7BE] text-[#1F2E33] focus:outline-none focus:ring-2 focus:ring-[#C95A2E]/30 focus:border-[#C95A2E] transition-colors text-sm"
+                    value={formProgram}
+                    onChange={(e) => setFormProgram(e.target.value)}
                     data-ocid="contact.select"
                   >
                     <option value="">Select a program…</option>
@@ -853,6 +879,7 @@ export default function App() {
                     <option>Guitar</option>
                     <option>Tabla</option>
                     <option>Piano</option>
+                    <option>Abacus</option>
                     <option>Yoga</option>
                     <option>Computer</option>
                     <option>Music &amp; Vocals</option>
@@ -871,6 +898,8 @@ export default function App() {
                     rows={3}
                     placeholder="Any questions or notes…"
                     className="w-full px-4 py-2.5 rounded-lg bg-[#F6EBD6] border border-[#E6D7BE] text-[#1F2E33] placeholder:text-[#4B4F52]/50 focus:outline-none focus:ring-2 focus:ring-[#C95A2E]/30 focus:border-[#C95A2E] transition-colors text-sm resize-none"
+                    value={formMessage}
+                    onChange={(e) => setFormMessage(e.target.value)}
                     data-ocid="contact.textarea"
                   />
                 </div>
@@ -982,6 +1011,7 @@ export default function App() {
                   "Guitar",
                   "Tabla",
                   "Piano",
+                  "Abacus",
                   "Yoga",
                   "Computer",
                   "Music & Vocals",
