@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* Kuhi Path color palette */
+    /* Warm cream #F6EBD6 */
+    --background: 0.94 0.03 85;
+    /* Off-white #FAF7F0 */
+    --card: 0.97 0.01 85;
+    --card-foreground: 0.22 0.03 215;
+    /* Deep slate #1F2E33 */
+    --foreground: 0.22 0.03 215;
+    --popover: 0.97 0.01 85;
+    --popover-foreground: 0.22 0.03 215;
+    /* Terracotta #C95A2E */
+    --primary: 0.55 0.15 38;
+    --primary-foreground: 0.97 0.01 85;
+    /* Light cream secondary */
+    --secondary: 0.91 0.025 85;
+    --secondary-foreground: 0.22 0.03 215;
+    --muted: 0.91 0.025 85;
+    /* Muted charcoal #4B4F52 */
+    --muted-foreground: 0.42 0.01 215;
+    /* Terracotta accent */
+    --accent: 0.55 0.15 38;
+    --accent-foreground: 0.97 0.01 85;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    /* Divider #E6D7BE */
+    --border: 0.88 0.03 85;
+    --input: 0.88 0.03 85;
+    --ring: 0.55 0.15 38;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.97 0.01 85;
+    --sidebar-foreground: 0.22 0.03 215;
+    --sidebar-primary: 0.55 0.15 38;
+    --sidebar-primary-foreground: 0.97 0.01 85;
+    --sidebar-accent: 0.91 0.025 85;
+    --sidebar-accent-foreground: 0.22 0.03 215;
+    --sidebar-border: 0.88 0.03 85;
+    --sidebar-ring: 0.55 0.15 38;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+}
